@@ -58,5 +58,9 @@ public class Game {
 
         ball -= strike;
         output.showHint(strike, ball);
+
+        if (strike == 3) {
+            output.showWinningMessage();
+        }
     }
 }
