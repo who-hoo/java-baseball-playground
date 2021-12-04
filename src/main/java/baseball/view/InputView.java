@@ -23,14 +23,12 @@ public class InputView {
     public boolean getUserContinue() {
         System.out.println(CONTINUE_MSG);
         String input = sc.nextLine();
-
         if (input.equals(CONTINUE)) {
             return true;
         }
         if (input.equals(TERMINATE)) {
             return false;
         }
-
         return getUserContinue();
     }
 
