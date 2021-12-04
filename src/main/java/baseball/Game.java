@@ -21,6 +21,12 @@ public class Game {
             System.out.println(answer); // 테스트용
             int userGuess = input.getUserGuess();
             compareWithAnswer(userGuess);
+            boolean isContinue = input.getUserContinue();
+            if (isContinue) {
+                resetGame();
+            } else {
+                terminate();
+            }
         }
     }
 
@@ -62,5 +68,15 @@ public class Game {
         if (strike == 3) {
             output.showWinningMessage();
         }
+    }
+
+    private void resetGame() {
+        isRunning = true;
+        initAnswer();
+    }
+
+    private void terminate() {
+        isRunning = false;
+        input.close();
     }
 }
