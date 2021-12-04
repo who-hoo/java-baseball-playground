@@ -31,6 +31,7 @@ public class Game {
     }
 
     private void initAnswer() {
+        answer.clear();
         while (answer.size() < 3) {
             int num = random.nextInt(9) + 1;
             insertNumberToAnswer(num);
