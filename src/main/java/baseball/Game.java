@@ -38,25 +38,34 @@ public class Game {
         }
     }
 
+    private int calcStrike(String userGuess, String answer) {
+        int strike = 0;
+        for (int i = 0; i < userGuess.length(); i++) {
+            if (userGuess.charAt(i) == answer.charAt(i)) {
+                strike++;
+            }
+        }
+        return strike;
+    }
+
+    private int calcBall(String userGuess, String answer) {
+        int ball = 0;
+        for (int i = 0; i < userGuess.length(); i++) {
+            if (answer.contains(String.valueOf(userGuess.charAt(i)))) {
+                ball++;
+            }
+        }
+        return ball;
+    }
+
     private void compareWithAnswer(String userGuess) {
         String answerToString = "";
         for (int number : answer) {
             answerToString = answerToString.concat(String.valueOf(number));
         }
 
-        int strike = 0;
-        int ball = 0;
-
-        for (int i = 0; i < userGuess.length(); i++) {
-            if (userGuess.charAt(i) == answerToString.charAt(i)) {
-                strike++;
-            }
-            if (answerToString.contains(String.valueOf(userGuess.charAt(i)))) {
-                ball++;
-            }
-        }
-
-        ball -= strike;
+        int strike = calcStrike(userGuess, answerToString);
+        int ball = calcBall(userGuess, answerToString) - strike;
         output.showHint(strike, ball);
 
         if (strike == 3) {
