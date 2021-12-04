@@ -1,6 +1,7 @@
 package baseball;
 
 import baseball.view.InputView;
+import baseball.view.ResultView;
 import java.util.*;
 
 public class Game {
@@ -8,6 +9,7 @@ public class Game {
     private final Random random = new Random();
     private final List<Integer> answer = new ArrayList<>();
     private final InputView input = new InputView();
+    private final ResultView output = new ResultView();
     private boolean isRunning = true;
 
     public Game() {
@@ -55,7 +57,6 @@ public class Game {
         }
 
         ball -= strike;
-        String hint = ball + "볼 " + strike + "스트라이크";
-        System.out.println(hint);
+        output.showHint(strike, ball);
     }
 }
