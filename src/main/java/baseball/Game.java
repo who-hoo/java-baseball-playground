@@ -16,8 +16,9 @@ public class Game {
 
     public void run() {
         while (isRunning) {
+            System.out.println(answer); // 테스트용
             int userGuess = input.getUserInput();
-            System.out.println(userGuess);
+            compareWithAnswer(userGuess);
         }
     }
 
@@ -32,5 +33,29 @@ public class Game {
         if (!answer.contains(num)) {
             answer.add(num);
         }
+    }
+
+    private void compareWithAnswer(int userGuess) {
+        String guess = String.valueOf(userGuess);
+        String answerToString = "";
+        for (int number : answer) {
+            answerToString = answerToString.concat(String.valueOf(number));
+        }
+
+        int strike = 0;
+        int ball = 0;
+
+        for (int i = 0; i < guess.length(); i++) {
+            if (guess.charAt(i) == answerToString.charAt(i)) {
+                strike++;
+            }
+            if (answerToString.contains(String.valueOf(guess.charAt(i)))) {
+                ball++;
+            }
+        }
+
+        ball -= strike;
+        String hint = ball + "볼 " + strike + "스트라이크";
+        System.out.println(hint);
     }
 }
