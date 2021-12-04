@@ -20,14 +20,7 @@ public class Game {
         while (isRunning) {
             System.out.println(answer); // 테스트용
             int userGuess = input.getUserGuess();
-            if (compareWithAnswer(userGuess)) {
-                boolean isContinue = input.getUserContinue();
-                if (isContinue) {
-                    resetGame();
-                } else {
-                    terminate();
-                }
-            }
+            compareWithAnswer(userGuess);
         }
     }
 
@@ -45,7 +38,7 @@ public class Game {
         }
     }
 
-    private boolean compareWithAnswer(int userGuess) {
+    private void compareWithAnswer(int userGuess) {
         String guess = String.valueOf(userGuess);
         String answerToString = "";
         for (int number : answer) {
@@ -69,10 +62,16 @@ public class Game {
 
         if (strike == 3) {
             output.showWinningMessage();
-            return true;
+            gameOver();
         }
+    }
 
-        return false;
+    private void gameOver() {
+        if (input.getUserContinue()) {
+            resetGame();
+            return;
+        }
+        terminate();
     }
 
     private void resetGame() {
