@@ -8,6 +8,10 @@ import static java.util.stream.Collectors.joining;
 
 public class Answer {
 
+    public static final int COUNT = 3;
+    public static final int MIN = 1;
+    public static final int MAX = 9;
+
     private final Random random = new Random();
     private final List<Integer> numbers = new ArrayList<>();
 
@@ -24,8 +28,8 @@ public class Answer {
 
     public void initAnswer() {
         numbers.clear();
-        while (numbers.size() < 3) {
-            int num = random.nextInt(9) + 1;
+        while (numbers.size() < COUNT) {
+            int num = random.nextInt(MAX) + MIN;
             insertNumberToAnswer(num);
         }
     }

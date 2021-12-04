@@ -46,7 +46,7 @@ public class Game {
         int ball = calcBall(userGuess) - strike;
         output.showHint(strike, ball);
 
-        if (strike == 3) {
+        if (strike == Answer.COUNT) {
             output.showWinningMessage();
             gameOver();
         }
