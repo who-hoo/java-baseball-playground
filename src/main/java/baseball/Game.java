@@ -19,7 +19,7 @@ public class Game {
     public void run() {
         while (isRunning) {
             System.out.println(answer); // 테스트용
-            int userGuess = input.getUserGuess();
+            String userGuess = input.getUserGuess();
             compareWithAnswer(userGuess);
         }
     }
@@ -38,8 +38,7 @@ public class Game {
         }
     }
 
-    private void compareWithAnswer(int userGuess) {
-        String guess = String.valueOf(userGuess);
+    private void compareWithAnswer(String userGuess) {
         String answerToString = "";
         for (int number : answer) {
             answerToString = answerToString.concat(String.valueOf(number));
@@ -48,11 +47,11 @@ public class Game {
         int strike = 0;
         int ball = 0;
 
-        for (int i = 0; i < guess.length(); i++) {
-            if (guess.charAt(i) == answerToString.charAt(i)) {
+        for (int i = 0; i < userGuess.length(); i++) {
+            if (userGuess.charAt(i) == answerToString.charAt(i)) {
                 strike++;
             }
-            if (answerToString.contains(String.valueOf(guess.charAt(i)))) {
+            if (answerToString.contains(String.valueOf(userGuess.charAt(i)))) {
                 ball++;
             }
         }
