@@ -19,7 +19,7 @@ public class Game {
     public void run() {
         while (isRunning) {
             System.out.println(answer); // 테스트용
-            int userGuess = input.getUserInput();
+            int userGuess = input.getUserGuess();
             compareWithAnswer(userGuess);
         }
     }
