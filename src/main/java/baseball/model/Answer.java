@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import static java.util.stream.Collectors.joining;
+
 public class Answer {
 
     private final Random random = new Random();
@@ -15,11 +17,9 @@ public class Answer {
 
     @Override
     public String toString() {
-        String numbersToString = "";
-        for (int number : numbers) {
-            numbersToString = numbersToString.concat(String.valueOf(number));
-        }
-        return numbersToString;
+        return numbers.stream()
+            .map(String::valueOf)
+            .collect(joining(""));
     }
 
     public void initAnswer() {
