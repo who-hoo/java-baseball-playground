@@ -1,4 +1,4 @@
-package baseball;
+package baseball.controller;
 
 import baseball.model.Answer;
 import baseball.view.InputView;
