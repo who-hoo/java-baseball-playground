@@ -20,4 +20,13 @@ public class StringTest {
         String[] actual2 = "1".split(",");
         assertThat(actual2).containsExactly("1");
     }
+
+    @Test
+    void substring() {
+        String actual = "(1,2)";
+        actual = actual.substring(
+            actual.indexOf("(") + 1, actual.lastIndexOf(")")
+        );
+        assertThat(actual).isEqualTo("1,2");
+    }
 }
