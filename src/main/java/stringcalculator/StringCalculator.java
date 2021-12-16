@@ -52,6 +52,10 @@ public class StringCalculator extends Calculator {
         scanner.close();
     }
 
+    public String runWithoutUserInput(String input) {
+        return calculate(getExpression(input));
+    }
+
     public static void main(String[] args) {
         StringCalculator calculator = new StringCalculator();
         calculator.run();
